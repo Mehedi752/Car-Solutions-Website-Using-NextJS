@@ -1,7 +1,10 @@
 import React from 'react';
 import BookingUpdateForm from '../components/BookingUpdateForm';
+type Props = {
+  params: { id: string }
+}
 
-const UpdateBookingPage = async({ params }: { params: { id: string } }) => {
+const UpdateBookingPage = async ({ params }: Props) => {
     const id = params.id;
     const res = await fetch(`http://localhost:3000/api/checkout/${id}`);
     const singleBookingData = await res.json();

@@ -1,9 +1,10 @@
 import dbConnect, { collectionNames } from '@/lib/dbConnect'
 import { ObjectId } from 'mongodb'
 import { getServerSession } from 'next-auth'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { authOptions } from '@/lib/authOptions'
+
 
 export const DELETE = async (
   request: Request,
@@ -26,8 +27,9 @@ export const DELETE = async (
   return NextResponse.json(result)
 }
 
+
 export const GET = async (
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
   const id = params.id
@@ -41,7 +43,6 @@ export const GET = async (
 
   return NextResponse.json(singleBookingData)
 }
-
 export const PATCH = async (
   request: Request,
   { params }: { params: { id: string } }

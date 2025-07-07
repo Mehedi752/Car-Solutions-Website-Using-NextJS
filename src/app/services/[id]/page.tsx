@@ -4,8 +4,12 @@ import Image from 'next/image'
 import ServicesTag from '../components/ServicesTag'
 import logo from '../../../../public/logo2.svg'
 import Link from 'next/link'
+type Props = {
+  params: { id: string }
+}
 
-const ServiceDetailPage = async ({ params }: { params: { id: string } }) => {
+
+const ServiceDetailPage =  async ({ params }: Props) => {
   const id =  params.id
   const res = await fetch(`http://localhost:3000/api/service/${id}`)
   const service = await res.json()

@@ -1,7 +1,10 @@
 import React from 'react';
 import CheckoutForm from '../components/CheckoutForm';
+type Props = {
+  params: { id: string }
+}
 
-const checkoutPage = async ({ params }: { params: { id: string } }) => {
+const checkoutPage = async ({ params }: Props) => {
   const id =  params.id
   const res = await fetch(`http://localhost:3000/api/service/${id}`)
   const service = await res.json()
